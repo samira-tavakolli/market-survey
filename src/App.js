@@ -74,7 +74,12 @@ function App() {
         }
         handleCurrentQuestion(currentQuestion + 1);
     };
-
+    const redirectToFirstPage = () => {
+        setTimeout(() => {
+            handlePage("question");
+            handleCurrentQuestion(0);
+        }, 10000);
+    };
     const renderQuestionPage = () => {
         return (
             <div className="rainbow">
@@ -138,7 +143,7 @@ function App() {
                                                     end={{ opacity: 1 }}
                                                 >
                                                     <div
-                                                        style={{ fontSize: "4.5rem" }}
+                                                        style={{ fontSize: "4.5rem", cursor: "pointer" }}
                                                         onClick={() => whileAnswered(answer)}
                                                     >
                                                         {String.fromCodePoint(answer)}
@@ -189,6 +194,7 @@ function App() {
                     style={{ fontSize: "8rem" }}
                 >
                     TACK!
+                    {redirectToFirstPage()}
                 </h1>
                 ;
             </div>
